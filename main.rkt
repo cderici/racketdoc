@@ -9,7 +9,7 @@
 
 (define (racketdoc dir config-file)
 
-  (define-values (source-dir extension doctag block scribble-out)
+  (define-values (source-dir extension doctag block scribble-out main-scrbl title)
     (read-configs config-file))
 
   ((dynamic-require doc-gen 'make-docs)
@@ -17,7 +17,9 @@
    #:extension extension
    #:doctag doctag
    #:block block
-   #:out-dir scribble-out))
+   #:out-dir scribble-out
+   #:main-scrbl-file main-scrbl
+   #:title title))
 
 (module+ main
 

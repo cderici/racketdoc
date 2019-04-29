@@ -8,6 +8,8 @@ extension:py
 doctag:pycketdoc
 block:"""
 scribble-out-dir:/home/caner/pycketland/pycket/
+main-scrbl-file:main.scrbl
+title:Pycket
 ```
 
 RacketDoc will traverse the `source-dir` and look inside the files with `.extension` to look for `block`s starting with `doctag`, and automatically generate scribble docs from those blocks, and put the `.scrbl` files inside the `scribble-out-dir`.

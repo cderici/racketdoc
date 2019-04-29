@@ -19,4 +19,6 @@
             (hash-ref config-ht 'extension)
             (hash-ref config-ht 'doctag)
             (hash-ref config-ht 'block)
-            (hash-ref config-ht 'scribble-out-dir))))
+            (hash-ref config-ht 'scribble-out-dir)
+            (hash-ref config-ht 'main-scrbl-file)
+            (hash-ref config-ht 'title))))
