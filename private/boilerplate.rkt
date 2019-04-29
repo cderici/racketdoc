@@ -1,7 +1,8 @@
 #lang racket/base
 
 (provide generate-makefile
-         generate-main-scrbl)
+         generate-main-scrbl
+         source-page-scrbl-template)
 
 (define (generate-makefile dir main.scrbl)
   (with-output-to-file (build-path dir "Makefile")
@@ -26,6 +27,20 @@ clean:
 
 @title{~a}
 
-Welcome to ~a's documentation" title title))
+Welcome to ~a's documentation
+
+" title title))
       (printf "~a" main-content))
     #:exists 'replace))
+
+
+(define (source-page-scrbl-template title)
+  (format "#lang scribble/manual
+
+@title{~a}
+
+Hey
+
+
+
+" title))

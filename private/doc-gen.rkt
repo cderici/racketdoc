@@ -22,6 +22,12 @@
 
   (parameterize ([current-directory source-dir])
     (for ([p (in-directory)] #:when (path-has-extension? p extension))
-      (with-output-to-file (build-path docs-dir (string-append (path->string p) ".scrbl"))
-        (lambda () (printf "- hey\n - hoy"))
+      (define scrbl-file-name (string-append (path->string p) ".scrbl"))
+      ;; write an include-section into the main.scrble
+      (with-output-to-file (build-path docs-dir main.scrbl)
+        (lambda () (printf "\n@include-section[\"~a\"]" scrbl-file-name))
+        #:exists 'append)
+
+      (with-output-to-file (build-path docs-dir scrbl-file-name)
+        (lambda () (printf (source-page-scrbl-template p)))
         #:exists 'replace))))
