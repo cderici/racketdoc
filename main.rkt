@@ -4,16 +4,20 @@
          racket/cmdline
          "private/reader.rkt")
 
-(define-runtime-module-path doc-gen "private/doc-gen.rkt")      
-                
+(define-runtime-module-path doc-gen "private/doc-gen.rkt")
+
 
 (define (racketdoc dir config-file)
 
-  (define config (read-configs config-file))
-  (printf "config : ~a\n" config)
+  (define-values (source-dir extension doctag block scribble-out)
+    (read-configs config-file))
+
   ((dynamic-require doc-gen 'make-docs)
-   #:dir dir
-   #:config config))
+   #:source-dir source-dir
+   #:extension extension
+   #:doctag doctag
+   #:block block
+   #:out-dir scribble-out))
 
 (module+ main
 

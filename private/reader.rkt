@@ -14,4 +14,9 @@
                (let ([k-v (string-split ln ":")])
                  (values (string->symbol (car k-v)) (cadr k-v))))))])
     (check-configs config-file config-ht)
-    config-ht))
+    ;; FIXME: refactor away the hash table
+    (values (hash-ref config-ht 'source-dir)
+            (hash-ref config-ht 'extension)
+            (hash-ref config-ht 'doctag)
+            (hash-ref config-ht 'block)
+            (hash-ref config-ht 'scribble-out-dir))))
