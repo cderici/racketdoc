@@ -22,7 +22,7 @@ clean:
   (with-output-to-file (build-path dir main.scrbl)
     (lambda ()
       (define main-content
-        (format "lang scribble/manual
+        (format "#lang scribble/manual
 
 @title{~a}
 
