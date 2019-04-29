@@ -1,6 +1,6 @@
 #lang racket/base
 
-(require racket/path)
+(require racket/path "boilerplate.rkt")
 
 (provide make-docs)
 
@@ -10,6 +10,8 @@
                    #:block block
                    #:out-dir scribble-out)
   (define docs-dir (build-path scribble-out "docs"))
+
+  (generate-makefile docs-dir)
 
   (unless (directory-exists? docs-dir)
     (make-directory docs-dir))
